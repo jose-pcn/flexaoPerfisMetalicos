@@ -15,7 +15,6 @@ def param_perfil(product, bitola):
     listaParam = dfSelecionado.iloc[0].to_list()
 
     return listaParam
-#print(param_perfil('Laminados', 'W 150 x 13,0')) 
 
 def lista_bitolas(product):
 
@@ -23,5 +22,3 @@ def lista_bitolas(product):
     listaBitolas = dataFrame['Bitola (mm x kg/m)'].to_list()
 
     return listaBitolas
-
-print(lista_bitolas('Laminados'))
