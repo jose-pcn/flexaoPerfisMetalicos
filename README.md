@@ -30,6 +30,6 @@ O que é necessário para utilizar o script:
 1. **Clone do repositório**:
 
    ```bash
-
-   cd
+   git clone https://github.com/yourusername/flexaoPerfisMetalicos
+   cd flexaoPerfisMetalicos
    ```
