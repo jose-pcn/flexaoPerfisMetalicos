@@ -29,7 +29,7 @@ O que é necessário para utilizar o script:
 
 1. **Clone do repositório**:
 
-   '''bash
+   ```bash
 
    cd
-   '''
+   ```
