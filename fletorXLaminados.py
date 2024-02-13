@@ -1,7 +1,8 @@
 from funcoes_auxiliares import param_perfil
 
-def flt(product, bitola, fy):
-    # Com fy em kN/cm2 
+def flt(product, bitola, fy, lb):
+    modE = 20000
+    # Com fy em kN/cm²
     lp = param_perfil(product, bitola)
 
     '''
@@ -27,9 +28,18 @@ def flt(product, bitola, fy):
     lp[19] = Cw
     '''
 
-    momentoPlast = lp[12] * fy
+    momPlast = lp[12] * fy
+    lmbd = lb / lp[15]
+    lmbdP = 1.76 *pow(modE / fy, 0.5)
 
+    if lmbd <= lmbdP:
+        momResFLT = momPlast / 1.1
+    else:
+        tensaoRes = 0.3 * fy
+        beta1 = (fy - tensaoRes) * lp[10] / (modE * lp[18])
+        lambR = 1.38 * pow (lp[13] * lp[18], 0.5) / (lp[15] * beta1 * lp[18]) * pow(1 + pow(1 + (27 * lp[19] * 
+        (beta1 ** 2) / lp[13]), 0.5), 0.5)
+        
+    return lambR
 
-    return momentoPlast, lp[12]
-
-print(flt('Laminados', "W 310 x 23,8", fy = 25))
+print(flt('Laminados', "W 310 x 23,8", fy = 25, lb = 300))
